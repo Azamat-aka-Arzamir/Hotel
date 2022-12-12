@@ -31,6 +31,9 @@ Date ReadDate()
 	}
 	return output;
 }
+/// <summary>
+/// "Check reservation status"
+/// </summary>
 void FirstOption()
 {
 	cout << "\n \n \n \n";
@@ -41,6 +44,7 @@ void FirstOption()
 	cin.ignore(10000, '\n');
 	cin.getline(n, 1000, '\n');
 	name = n;
+	//Parsing input as name or number
 	if (IsInteger(name))
 	{
 		int i = stoi(name);
@@ -58,12 +62,16 @@ void FirstOption()
 	}
 	cout << "\n \n \n \n";
 }
+/// <summary>
+/// Make new order
+/// </summary>
 void SecondOption()
 {
 	cout << "\n \n \n \n";
 	Date d1;
 	Date d2;
 	string choice;
+	//ask dates until second is after first
 	while (d2 - d1 < 1)
 	{
 		cout << NewOrder;
@@ -72,6 +80,7 @@ void SecondOption()
 		d2 = ReadDate();
 	}
 	int b = 0;
+	//ask for room size until it 1 or 2
 	while (b != 1 && b != 2)
 	{
 		cout << "How many beds do you need (1/2)?\n";
@@ -85,7 +94,7 @@ void SecondOption()
 	{
 		cin >> choice;
 	}
-	//automaticaly choosen room 
+	//automaticaly choosen room (first available)
 	if (choice == "n")
 	{
 		if (b == 1)
@@ -112,6 +121,7 @@ void SecondOption()
 	//manual choice
 	else
 	{
+		//put out table of rooms with 15 columns
 		cout << "\nThese rooms are free for this period: \n";
 		if (b == 1)
 		{
@@ -137,6 +147,7 @@ void SecondOption()
 				}
 			}
 		}
+		//ask for choosing room until it is in right range and isn't occupied
 		while (choosenRoom > 150 + (150 * (b - 1)) || choosenRoom < (150 * (b - 1)))
 		{
 			cout << "\n Which room do you want to order?\n";
@@ -148,8 +159,10 @@ void SecondOption()
 			}
 		}
 	}
+	//random discount
 	int discount = rand() % 3 * 10;
 	int sum = (50 + 50 * b) * (d2 - d1);
+	//summary
 	cout << "\n--------------------------------------\nOne night = " << (50 + 50 * b);
 	cout << "\nNights = " << (d2 - d1);
 	cout << "\ntotal = " << sum;
@@ -185,6 +198,7 @@ int main()
 	bool success = false;
 	for (int i = 0; i < 10; i++)base.FillBaseWithRandomOrders();
 	int a = 0;
+	//main menu
 	while (a != 4)
 	{
 		cout << EnterWindow;
