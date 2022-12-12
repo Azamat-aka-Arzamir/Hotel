@@ -5,6 +5,7 @@
 using namespace std;
 
 int ReadInt();
+//
 bool IsInteger(string& s)
 {
 	if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;

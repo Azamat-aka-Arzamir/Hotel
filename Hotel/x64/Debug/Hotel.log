@@ -1,6 +1,6 @@
 ﻿  Source.cpp
-C:\Users\Admin\source\repos\Hotel\Hotel\Source.cpp(181,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Admin\source\repos\Hotel\Hotel\Source.cpp(182,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   Text.cpp
   Создание кода...
-C:\Users\Admin\source\repos\Hotel\Hotel\Header.h(130): warning C4715: Date::operator-: значение возвращается не при всех путях выполнения
+C:\Users\Admin\source\repos\Hotel\Hotel\Header.h(140): warning C4715: Date::operator-: значение возвращается не при всех путях выполнения
   Hotel.vcxproj -> C:\Users\Admin\source\repos\Hotel\x64\Debug\Hotel.exe

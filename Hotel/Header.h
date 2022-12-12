@@ -32,6 +32,12 @@ public:
 	{
 		this->SetDate(_day, _month, _year);
 	}
+	/// <summary>
+	/// Set date with all restrictions
+	/// </summary>
+	/// <param name="_day"></param>
+	/// <param name="_month"></param>
+	/// <param name="_year"></param>
 	void SetDate(int _day, int _month, int _year)
 	{
 		if (_month > 12 || _month < 1)
@@ -49,6 +55,10 @@ public:
 		month = _month - 1;
 		year = _year;
 	};
+	/// <summary>
+	/// Set date with all restrictions
+	/// </summary>
+	/// <param name="success"> - ref bool of result. True if set successfully </param>
 	void SetDate(int _day, int _month, int _year, bool& success)
 	{
 		if (_month > 12 || _month < 1)
@@ -139,6 +149,7 @@ private:
 	string ordererName;
 public:
 
+	//default constructor
 	OrderInfo()
 	{
 		number = 0;
@@ -164,10 +175,17 @@ public:
 static struct Base
 {
 public:
+	/// <summary>
+	/// Draws "window" for personl data
+	/// </summary>
 	void DrawPersonalData(string name)
 	{
 		cout << "X---------------------Orders----------------------------X\n" << "All orders of " << name << endl;
 	}
+	/// <summary>
+	/// Print "window" with data about order
+	/// </summary>
+	/// <param name="o"> - order</param>
 	void ShowOrderInfo(OrderInfo o)
 	{
 		if (o.GetName() == "") { return; }
@@ -180,7 +198,9 @@ public:
 	}
 	OrderInfo roomsFor1[150][300]{};//Array with data about room occupancy, each row contains timeline of booking for this room
 	OrderInfo roomsFor2[150][300]{};
-	int orderNumbers[90000];
+	int orderNumbers[90000];//0 if order number free, 1 if occupied. 
+	//The reason why there is so many arrays in program is requirement for order number to be random.
+	//Order numbers and orders themselves should be located in normal order and not even in array, but in list.
 	Base()
 	{
 	}
@@ -208,6 +228,7 @@ public:
 		}
 		return true;
 	}
+	//Check for intersection of periods
 	bool DoTwoPeriodsIntersect(Date d11, Date d12, Date d21, Date d22)
 	{
 		if (d21 - d11 == -1 && d11 - d22 == -1)return true;
@@ -216,6 +237,7 @@ public:
 		if (d21 - d12 == -1 && d11 - d22 == -1)return true;
 		return false;
 	}
+	//Randomized filling with 1/5 chance for every room. Executing few times can make queues for rooms. 
 	void FillBaseWithRandomOrders()
 	{
 		for (int i = 0; i < 300; i++)
@@ -243,6 +265,7 @@ public:
 			}
 		}
 	}
+	//Find random free order number. Should be something like Orders.Length+1, but excercise require random one
 	int FindFreeOrderNumber()
 	{
 		int i;
@@ -253,6 +276,9 @@ public:
 		return i + 10000;
 	}
 	OrderInfo allOrders[90000];
+	/// <summary>
+	/// Add new order for room with all restrictions
+	/// </summary>
 	void RegisterNewOrder(OrderInfo order)
 	{
 		if (order.GetOrderNumber() < 10000)
@@ -292,6 +318,7 @@ public:
 		}
 
 	}
+	//For debug purposes
 	void PrintAllOrders(string name)
 	{
 		for (auto o : allOrders)
