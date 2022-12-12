@@ -176,6 +176,7 @@ public:
 		cout << "|Orderer's name - " << o.GetName() << endl;
 		cout << "|Arrival time - " << o.GetArrival().GetDate() << " after 12PM" << endl;
 		cout << "|Departure time - " << o.GetDeparture().GetDate() << " before 12PM" << endl;
+		cout << "|Nights - " << o.GetDeparture() -o.GetArrival() << endl;
 	}
 	OrderInfo roomsFor1[150][300]{};//Array with data about room occupancy, each row contains timeline of booking for this room
 	OrderInfo roomsFor2[150][300]{};
